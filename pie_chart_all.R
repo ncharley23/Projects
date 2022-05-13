@@ -58,7 +58,7 @@ library(R.utils)
 
 #Storing the list of websites from an excelsheet and a specific column into a variable
 
-my_data <-as.data.frame(read_excel("C:\\Users\\OneDrive\\Documents\\Certs-Expiring-02012020-03312020.xlsx", sheet = 1, col_types = c("text","skip","date")))
+my_data <-as.data.frame(read_excel("C:\\Users\\OneDrive\\Documents\\Certs-Expiring.xlsx", sheet = 1, col_types = c("text","skip","date")))
 
 
 
@@ -86,13 +86,12 @@ nmap_scan <- as.data.frame.character(nmap_scan)
 
 
 
-#cat("Entrust MSO Common Name", ",","Entrust MSO Expiration Date",",", "Web site Expiration Date", "," , "Port#", ",", "Status", file="Book2.csv", append = TRUE, collapse="\n")
 
 
 
 
 
-results <- setNames(data.frame(matrix(ncol = 5, nrow = 0)), c("Entrust MSO Common Name","Entrust MSO Expiration Date", "Website Expiration Date", "Port#", "Status"))
+results <- setNames(data.frame(matrix(ncol = 5, nrow = 0)), c("Common Name","Expiration Date", "Website Expiration Date", "Port#", "Status"))
 
 
 
@@ -270,7 +269,7 @@ f <-foreach(i = 1:50,.combine = rbind , .inorder=FALSE, .packages = c('sys','doS
 
   }
 
-  results <- rbind(data.frame("Entrust MSO Common Name"=my_data[i,1], "Entrust MSO Expiration Date"=format(my_data[i,2], "%m/%d/%Y"), "Website Expiration Date"= format(expires[2], "%m/%d/%Y"), "Port#"= as.integer(extract_ports[j]), "Status"= status))
+  results <- rbind(data.frame("Common Name"=my_data[i,1], "Expiration Date"=format(my_data[i,2], "%m/%d/%Y"), "Website Expiration Date"= format(expires[2], "%m/%d/%Y"), "Port#"= as.integer(extract_ports[j]), "Status"= status))
 
    
 
