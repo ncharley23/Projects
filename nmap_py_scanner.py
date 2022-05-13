@@ -16,7 +16,6 @@ nm = nmap.PortScanner()
 
 nm['127.0.0.1']['tcp'].keys()
 
-#nm.scan(hosts='f-internal-enterprisegateway.sys.cigna.com', arguments='-Pn -F --open --defeat-rst-ratelimit')
 
 nm.scan('127.0.0.1', '21-443')
 
@@ -52,7 +51,7 @@ for host in nm.all_hosts():
 
 
 
-data = pd.read_excel('C:/Users/C93980/Documents/certs/Copy of ValidationListing.xlsx', sheet_name='Sheet1')
+data = pd.read_excel('C:/Users/Documents/certs/Copy of ValidationListing.xlsx', sheet_name='Sheet1')
 
 data.drop_duplicates()
 
