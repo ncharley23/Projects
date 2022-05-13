@@ -12,7 +12,7 @@ library(plotly)
 
 library(DT)
 
-source("C:\\Users\\Documents\\certs\\Pie_chart_all.R")
+source("C:\\Users\\Documents\\certs\\pie_datatable.R")
 
 
 
@@ -138,7 +138,7 @@ server <- function(input, output, session) {
 
  output$dto <- renderDataTable({
 
-  status_table<- setNames(filter_datatable(), c("Entrust MSO Common Name", "Entrust MSO Expiration Date","Website Expiration Date","Port#", "Status"))
+  status_table<- setNames(filter_datatable(), c("Common Name", "Expiration Date","Website Expiration Date","Port#", "Status"))
 
   # status_table%>%filter(as.Date(as.POSIXct(status_table$`Website Expiration Date`, format = "%m/%d/%Y")) >input$daterange[1]& as.Date(as.POSIXct(status_table$`Website Expiration Date`, format = "%m/%d/%Y")) < input$daterange[2])
 
