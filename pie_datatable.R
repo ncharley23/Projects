@@ -54,7 +54,7 @@ server <- function(input, output, session) {
 
  current_category <- reactiveVal()
 
- date_change <- reactiveVal()
+ #date_change <- reactiveVal()
 
   
 
