@@ -13,9 +13,18 @@ df <- data.frame(
   date_time = messages %>% xml_attr("readable_date"),
   body = messages %>% xml_attr("body"),
   who_sent_it = messages %>% xml_attr("type"),
-  
   number = messages %>% xml_attr("address")
-)
+)%>%
+# %>% mutate(who_sent_it = case_when(who_sent_it=="2" ~ "Me", 
+#                                     who_sent_it == "1" ~ person))
 
-df<-df %>% mutate(who_sent_it = case_when(who_sent_it=="2" ~ "Me", 
-                                    who_sent_it == "1" ~ person,  TRUE ~ who_sent_it))
+#identify the sender
+mutate(who_sent_it= case_when(who_sent_it=="1" ~ person, 
+                              who_sent_it=="2"~ "Me" ))
+
+#case did not work with other cases
+df<-df%>%mutate(who_sent_it= case_when(str_detect(who_sent_it, "Unknown")==TRUE ~ number,
+                TRUE~who_sent_it))
+
+my_messages<-df%>%select(who_sent_it,body, date_time)
+
