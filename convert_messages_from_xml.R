@@ -30,5 +30,5 @@ df<-df%>%mutate(who_is_being_spoken_to = gsub("\\+","",who_is_being_spoken_to))
 #select only what you need to see
 my_messages<-df%>%select(who_sent_it,body, date_time,who_is_being_spoken_to)
 
-#mimicking a thread
+#mimicking an actual thread of conversation
 my_messages<-my_messages%>%arrange(who_is_being_spoken_to,date_time)
