@@ -25,7 +25,7 @@ df<-df%>%mutate(who_sent_it= case_when(str_detect(who_sent_it, "Unknown")==TRUE 
                 TRUE~who_sent_it))
 
 #if the number is saved as a contact, it will connect you and the person as a thread of messages
-df<-df%>%mutate(message_thread = case_when((str_detect(df$who_sent_it, '^[^+]+$')|is.na(df$who_sent_it))==TRUE& str_detect(person, fixed("("))!=TRUE~ person,
+df<-df%>%mutate(message_thread = case_when((str_detect(who_sent_it, '^[^+]+$')|is.na(who_sent_it))==TRUE& str_detect(person, fixed("("))!=TRUE~ person,
                                                    TRUE~message_thread))
 
 #getting rid of your plus signs to group numbers that may be the same(i.e, +1234567890,1234567890)
